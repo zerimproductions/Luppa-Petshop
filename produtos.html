@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Produtos - Luppa</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="script.js"></script>
+</head>
+
+<style>
+  img{
+    height: 125px;
+  }
+</style>
+
+<body>
+  <header>
+    <h1>Produtos</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="carrinho.html">Carrinho 🛒</a>
+    </nav>
+  </header>
+
+  <section class="lista-produtos">
+    <div class="grid">
+      <!-- Exemplo de 15 produtos -->
+      <script>
+        const produtos = [
+          {nome:'Ração Premium Cães', preco:79.9, img:'https://imgs.search.brave.com/W-Ii2KGINQLq_JByAjN3480m56rBkO9RyHRH9JRPeEo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hLXN0/YXRpYy5tbGNkbi5j/b20uYnIvMjgweDIx/MC9yYWNhby1zZWNh/LWhhbWJpLXByZW1p/dW0tZXNwZWNpYWwt/ZnJhbmdvLWUtYXJy/b3otcGFyYS1jYWVz/LWFkdWx0b3MtcmFj/YXMtZ3JhbmRlcy0y/MC1rZy9wZXRsb3Zl/b2ZpY2lhbC8yNzkx/NDE1LzQzNWQ0MjNi/ZDlkYWE1Nzk4ODRl/MWMzNzYwZjFmYjAy/LmpwZWc'},
+          {nome:'Ração Premium Gatos', preco:59.9, img:'https://imgs.search.brave.com/RJ0DOLdigbsmqSCwgPm_UxqAMNnb8Dt3XoRYqs_zghM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hLXN0/YXRpYy5tbGNkbi5j/b20uYnIvMjgweDIx/MC9yYWNhby1yb3lh/bC1jYW5pbi1wcmVt/aXVtLWNhdC1iZWxl/emEtZGEtcGVsYWdl/bS1wYXJhLWdhdG9z/LWFkdWx0b3MvYWdy/b3NvbG9iYXVydTIv/NzAzNjQvMzAxOTIw/NDg4NmYzMDU4YjFh/MWJiZThkNmEzMGUw/NGIuanBlZw'},
+          {nome:'Brinquedo Bola', preco:29.9, img:'https://imgs.search.brave.com/SEPL3EJ9HyjoW-FU858WWXVpxJN6_qx1NJh15tDftII/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/Xzk2OTA0Ny1NTEI4/MTg3MjAxNjk2N18w/MTIwMjUtRS1icmlu/cXVlZG9zLWJvbGEt/aW50ZXJhdGl2YS1l/bGV0cmljb3MtcGFy/YS1nYXRvcy1wZXQt/Y2FjaG9ycm8ud2Vi/cA'},
+          {nome:'Coleira Colorida', preco:39.9, img:'https://imgs.search.brave.com/s11raRaX_hWmKQAd5D5LeaG3M-pdYOBQyh-ONkKvoZU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/XzkxNjgwMC1NTEI4/MjY1MjczOTQ2OF8w/MzIwMjUtRS1jb2xl/aXJhLWFudGktcHVs/Z2EtY2FycmFwYXRv/LWxlaXNobWFuaW9z/ZS1jby1jb2xvcmlk/YXMud2VicA'},
+          {nome:'Shampoo Pet', preco:19.9, img:'https://imgs.search.brave.com/0VJk9qs6cLkCbA8Uc7VjAee5qhgdTyVo4T1-aMQQOMU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/XzkwNzYxOC1NTEI0/NDA0OTA4MjI3N18x/MTIwMjAtRS1zaGFt/cG9vLXByYS1jYWNo/b3Jyby1icmFucXVl/YWRvcm1hdGl6YWRv/ci1wZXQtZmFtaWx5/LTUwMG1sLndlYnA'},
+          {nome:'Caminha Luxo', preco:199.9, img:'https://imgs.search.brave.com/2uvUzrJpSP_YtuMnBN0qsACWoBDAegkAhMClUotVOtg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGNkbi5jb20u/YnIvaW1nL2ltZ19w/cm9kLzQ2MjcxMC9z/b2ZhX2NhbWluaGFf/cGV0X2x1eG9fZW1f/c3VlZF9wcmVtaXVt/Xzg1NTFfdmFyaWFj/YW9fMzExM18xXzI2/NDc5NWQ5NWNiZDg4/OWFhOTkxOTljOGQ2/NDhhMTQ3LmpwZw'},
+          {nome:'Areia Higiênica', preco:25.9, img:'https://imgs.search.brave.com/D1dWaMQLhKptEY2jw271PLMVntizHfTfiY7bA-5yShI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Y2FzYWRvcHJvZHV0/b3IuY29tLmJyL21l/ZGlhL2NhdGFsb2cv/cHJvZHVjdC9hL3Iv/YXJlaWFfaGlnaWVu/aWNhX3Nhbml0YXJp/YV9iaW9uYXR1cmVf/YmlvZGVncmFkYXZl/bF9maW5hX3VsdHJh/X3doaXRlX3NlbnNp/dGl2ZV9jYXNhX2Rv/X3Byb2R1dG9yXzIu/anBnP29wdGltaXpl/PWhpZ2gmYmctY29s/b3I9MjU1LDI1NSwy/NTUmZml0PWJvdW5k/cyZoZWlnaHQ9NTEy/JndpZHRoPTUxMiZj/YW52YXM9NTEyOjUx/Mg'},
+          {nome:'Antipulgas', preco:45.9, img:'https://imgs.search.brave.com/57UL1DBZZHjFdKoyo9GGPV-x8XOPWM_BhT6N3JmUX-o/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFQSTdxa0k2S0wu/anBn'},
+          {nome:'Coleira Retrátil', preco:59.9, img:'https://imgs.search.brave.com/se0MR9wiFsRatCezq13ba2RI2MdCTEI3DFNn4-VkCMs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtbmEuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzgxeFhOdjlHT0FM/LmpwZw'},
+          {nome:'Petisco Natural', preco:15.9, img:'https://imgs.search.brave.com/PZJ2Qmz2omG6Fq4jskO-uOemYpyyyqmtFBkE-JLlkVU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGNkbi5jb20u/YnIvaW1nL2ltZ19w/cm9kLzY4NjkyNy8x/ODBfcGV0aXNjb19k/ZXNpZHJhdGFkb19m/aWxlX21pZ25vbl9z/dWlub184MGdfbmF0/dXJhbF9idWRvX3Bl/dF8yMTI5XzFfM2Ey/OWIwNjNhY2QwYTVh/NDBhYWM5OGNiNGU3/Njk0OWQuanBn'},
+          {nome:'Escova de Pelos', preco:35.9, img:'https://imgs.search.brave.com/_JerI85_BYMbCPduT8u-PNOVD-6wYIEkbGC4CjfKE64/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/XzYyNTAxNC1NTEI5/MTYwOTk1MDgwM18w/OTIwMjUtRS1lc2Nv/dmEtcGV0LWF1dG9s/aW1wYW50ZS1yYXNx/dWVhZGVpcmEtbWFn/aWNhLXBlbG9zLWNl/cy1nYXRvcy53ZWJw'},
+          {nome:'Bebedouro Automático', preco:89.9, img:'https://imgs.search.brave.com/O1Ex6cBszJLuqzPO7CYWCrY6c7Uh8Qq9Iovjf8_tcZM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/XzgyNjU5NS1NTFU3/Mzk2NjEzNDA3Nl8w/MTIwMjQtRS53ZWJw'},
+          {nome:'Roupinha Pet', preco:49.9, img:'https://imgs.search.brave.com/GSHFtHnCEabbVUPEo-wApq3id5Est3l6bNtCZ2Pdxng/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/Xzc0NTkxMy1NTEI4/MzA4NzAwMTg1M18w/MzIwMjUtRS1yb3Vw/YS1kZS1jYWNob3Jy/by1yb3VwaW5oYS1w/ZXQtcm91cGFzLXBh/cmEtY2FjaG9ycm9z/LWdyYW5kZS53ZWJw'},
+          {nome:'Osso de Brinquedo', preco:9.9, img:'https://imgs.search.brave.com/9IGmumL6SiSK0YVY8U6zF4HpVqAFHwrbUzvgPz8bPiI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hLXN0/YXRpYy5tbGNkbi5j/b20uYnIvMjgweDIx/MC9icmlucXVlZG8t/bW9yZGVkb3Itb3Nz/by1vc3NpbmhvLXBs/YXN0aWNvLWNhY2hv/cnJvLWNhZXMtcGV0/LXBlcXVlbm8tbWVk/aW8tcG9ydGUtYm9t/LWFtaWdvLXBldC9s/b2phZGFzbW9jaGls/YXMyLzE2MDQ5ODk0/OTc4LzhlZTBjMDQx/YjkwNjg2MzU5MmMx/MWI3Mzc0YWYzYmZm/LmpwZWc'},
+          {nome:'Comedouro Inox', preco:29.9, img:'https://imgs.search.brave.com/6Pn6Rb8AOjeSWgsyaUd7YvwsTtYFbb7xhqmYqAYR3ho/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFjZ2NnV2U0OUwu/anBn'}
+        ];
+        document.write(produtos.map(p=>`
+          <div class="produto">
+            <img src="${p.img}" alt="${p.nome}">
+            <h3>${p.nome}</h3>
+            <p>R$ ${p.preco.toFixed(2)}</p>
+            <button class="add-carrinho" data-nome="${p.nome}" data-preco="${p.preco}">Adicionar</button>
+          </div>`).join(''));
+      </script>
+    </div>
+  </section>
+
+    <footer>
+    <p>© 2025 Luppa Petshop - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
